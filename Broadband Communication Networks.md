@@ -49,32 +49,32 @@ These terms are often used interchangeably, but they have distinct meanings in t
 - **Example**: A user might say, "My internet speed is 100 Mbps," referring to the throughput they experience.
 
 ---
-### **Mathematical Relationship Between Bandwidth, Capacity, and Throughput**
+# **Mathematical Relationship Between Bandwidth, Capacity, and Throughput**
 
 The terms **bandwidth**, **capacity**, and **throughput** are interconnected in communication systems. Below are the mathematical relationships that tie them together.
 
 ---
 
-### **1. Relationship Between Bandwidth and Capacity**
+## **1. Relationship Between Bandwidth and Capacity**
 The **Shannon-Hartley Theorem** defines the relationship between **bandwidth (B)**, **capacity (C)**, and the **signal-to-noise ratio (SNR)**:
 
-\[
+$$
 C = B \cdot \log_2(1 + \text{SNR})
-\]
+$$
 
 Where:
 - \( C \) = Channel capacity (in bits per second, bps)
 - \( B \) = Bandwidth (in Hertz, Hz)
 - \( \text{SNR} \) = Signal-to-Noise Ratio (dimensionless)
 
-#### **Key Insights**:
+### **Key Insights**:
 - **Bandwidth (B)**: Higher bandwidth increases capacity.
 - **SNR**: A higher SNR (better signal quality) increases capacity.
 - This formula gives the **theoretical maximum capacity** of a channel.
 
 ---
 
-### **2. Relationship Between Capacity and Throughput**
+## **2. Relationship Between Capacity and Throughput**
 Throughput is the **actual data rate** achieved in practice, which is often less than the theoretical capacity due to real-world factors like:
 - Protocol overhead (e.g., TCP/IP headers)
 - Network congestion
@@ -83,27 +83,27 @@ Throughput is the **actual data rate** achieved in practice, which is often less
 
 The relationship between capacity and throughput can be expressed as:
 
-\[
+$$
 \text{Throughput} = C \cdot \text{Efficiency}
-\]
+$$
 
 Where:
 - \( C \) = Channel capacity (from Shannon's formula)
 - \( \text{Efficiency} \) = A factor between 0 and 1, representing how effectively the network uses the available capacity.
 
-#### **Efficiency Factors**:
+### **Efficiency Factors**:
 - **Protocol Overhead**: For example, TCP/IP introduces headers that reduce usable throughput.
 - **Error Rate**: Higher error rates reduce throughput due to retransmissions.
 - **Congestion**: Network congestion can throttle throughput.
 
 ---
 
-### **3. Relationship Between Bandwidth and Throughput**
+## **3. Relationship Between Bandwidth and Throughput**
 Throughput is also directly influenced by bandwidth, but it depends on the **modulation scheme** and **SNR**. A simplified relationship can be expressed as:
 
-\[
+$$
 \text{Throughput} = B \cdot \log_2(M) \cdot \text{Efficiency}
-\]
+$$
 
 Where:
 - \( B \) = Bandwidth (in Hz)
@@ -111,60 +111,74 @@ Where:
 - \( \log_2(M) \) = Bits per symbol
 - \( \text{Efficiency} \) = Network efficiency (as above)
 
-#### **Example**:
-- If \( B = 10 \, \text{MHz} \) and \( M = 64 \) (64-QAM), then:
-  \[
-  \text{Throughput} = 10 \cdot \log_2(64) \cdot \text{Efficiency} = 10 \cdot 6 \cdot \text{Efficiency} = 60 \cdot \text{Efficiency} \, \text{Mbps}
-  \]
-  If efficiency is 0.8, then throughput = 48 Mbps.
+### **Example**:
+- If \( B = 10 \) MHz and \( M = 64 \) (64-QAM), then:
+
+  $$
+  \text{Throughput} = 10 \cdot \log_2(64) \cdot \text{Efficiency}
+  $$
+
+  Since \( \log_2(64) = 6 \):
+
+  $$
+  \text{Throughput} = 10 \cdot 6 \cdot \text{Efficiency} = 60 \cdot \text{Efficiency}, \text{ Mbps}
+  $$
+
+  If efficiency is 0.8, then throughput = **48 Mbps**.
 
 ---
 
-### **4. Combined Relationship**
+## **4. Combined Relationship**
 Combining the above relationships, we can express **throughput** in terms of **bandwidth**, **SNR**, and **efficiency**:
 
-\[
+$$
 \boxed{
 \text{Throughput} = B \cdot \log_2(1 + \text{SNR}) \cdot \text{Efficiency}
 }
-\]
+$$
 
-#### **Key Takeaways**:
+### **Key Takeaways**:
 1. **Bandwidth (B)**: The foundation for both capacity and throughput. Higher bandwidth allows for higher throughput.
 2. **SNR**: Improves capacity and throughput by reducing errors and enabling higher modulation schemes.
 3. **Efficiency**: Accounts for real-world limitations like protocol overhead and network congestion.
 
 ---
 
-### **Practical Example**
+## **Practical Example**
 Let’s calculate the throughput for a Wi-Fi network with the following parameters:
-- Bandwidth (\( B \)) = 20 MHz
-- SNR = 20 dB (linear SNR = 100)
-- Efficiency = 0.7 (due to protocol overhead and interference)
+- **Bandwidth (\( B \))** = 20 MHz
+- **SNR** = 20 dB (linear SNR = 100)
+- **Efficiency** = 0.7 (due to protocol overhead and interference)
 
-#### Step 1: Calculate Capacity
+### **Step 1: Calculate Capacity**
 Using Shannon's formula:
-\[
-C = B \cdot \log_2(1 + \text{SNR}) = 20 \cdot \log_2(1 + 100) = 20 \cdot \log_2(101) \approx 20 \cdot 6.66 = 133.2 \, \text{Mbps}
-\]
 
-#### Step 2: Calculate Throughput
-\[
+$$
+C = B \cdot \log_2(1 + \text{SNR}) = 20 \cdot \log_2(1 + 100)
+$$
+
+Approximating \( \log_2(101) \approx 6.66 \):
+
+$$
+C = 20 \cdot 6.66 = 133.2 \, \text{Mbps}
+$$
+
+### **Step 2: Calculate Throughput**
+$$
 \text{Throughput} = C \cdot \text{Efficiency} = 133.2 \cdot 0.7 = 93.24 \, \text{Mbps}
-\]
+$$
 
 ---
 
-### **Final Formula**
+## **Final Formula**
 The combined relationship between **bandwidth**, **capacity**, and **throughput** can be summarized as:
 
-\[
+$$
 \boxed{
 \text{Throughput} = B \cdot \log_2(1 + \text{SNR}) \cdot \text{Efficiency}
 }
-\]
+$$
 
----
 
 ### **Conclusion**
 - **Bandwidth** sets the upper limit for capacity and throughput.
